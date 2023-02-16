@@ -58,7 +58,8 @@ message OrderFindAllRequest {
     int64 perPage = 3;
     string search = 4;
     string status = 5;
-    bool count_only = 6;
+    string user_id = 6;
+    bool count_only = 7;
 }
 
 message OrderFindAllResponse {
