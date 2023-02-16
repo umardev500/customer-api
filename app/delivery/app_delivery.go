@@ -16,7 +16,6 @@ func NewAppDelivery(router fiber.Router, appUsecase domain.AppUsecase) {
 		appUsecase: appUsecase,
 	}
 
-	router.Get("/order-list", handler.Orders)
 	router.Get("/me", handler.Find)
 }
 
