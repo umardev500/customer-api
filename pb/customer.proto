@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+import "pb/response.proto";
+
+option go_package = "./pb";
+
+message CustomerLocation {
+    string address = 1;
+    string village = 2;
+    string district = 3;
+    string city = 4;
+    string province = 5;
+    string postal_code = 6;
+}
+
+message CustomerDetail {
+    string npsn = 1;
+    string name = 2;
+    string email = 3;
+    string wa = 4;
+    string type = 5;
+    string level = 6;
+    string about = 7;
+    string logo = 8;
+    CustomerLocation location = 9;
+}
+
+message CustomerCreateRequest {
+    string user = 1;
+    string pass = 2;
+    CustomerDetail detail = 3;
+}
+
+message Customer {
+    string customer_id = 1;
+    string user = 2;
+    string pass = 3;
+    CustomerDetail detail = 4;
+    string status = 5;
+    int64 exp_until = 6;
+    int64 created_at = 7;
+    int64 updated_at = 8;
+    int64 deleted_at = 9;
+}
+
+message CustomerFindRequest {
+    string customer_id = 1;
+}
+
+message CustomerFindResponse {
+    bool is_empty = 1;
+    Customer payload = 2;
+}
+
+message CustomerFindAllRequest {
+    string sort = 1;
+    int64 page = 2;
+    int64 perPage = 3;
+    string search = 4;
+    string status = 5;
+    bool count_only = 6;
+}
+
+message CustomerFindAllResponse {
+    repeated Customer customers = 1;
+    int64 rows = 2;
+    int64 pages = 3;
+    int64 per_page = 4;
+    int64 active_page = 5;
+    int64 total = 6;
+}
+
+message CustomerChangeStatusRequest {
+    string customer_id = 1;
+    string status = 2;
+}
+
+message CustomerUpdateDetailRequest {
+    string customer_id = 1;
+    CustomerDetail detail = 2;
+}
+
+message CustomerDeleteRequest {
+    string customer_id = 1;
+    bool hard = 2;
+}
+
+message CustomerSetExpRequest {
+    string customer_id = 1;
+    int64 exp_time = 2;
+    int64 settlement_time = 3;
+    string status = 4;
+}
+
+message CustomerLoginRequest {
+    string user = 1;
+    string pass = 2;
+}
+
+message CustomerLoginPayload {
+    string customer_id = 1;
+    string user = 2;
+}
+
+message CustomerLoginResponse {
+    bool is_empty = 1;
+    CustomerLoginPayload payload = 2;
+}
+
+service CustomerService {
+    rpc Create(CustomerCreateRequest) returns (Empty) {}
+    rpc Find(CustomerFindRequest) returns (CustomerFindResponse) {}
+    rpc FindAll(CustomerFindAllRequest) returns (CustomerFindAllResponse) {}
+    rpc ChangeStatus(CustomerChangeStatusRequest) returns (OperationResponse) {}
+    rpc UpdateDetail(CustomerUpdateDetailRequest) returns (OperationResponse) {}
+    rpc Delete(CustomerDeleteRequest) returns (OperationResponse) {}
+    rpc SetExp(CustomerSetExpRequest) returns (OperationResponse) {}
+    rpc Login(CustomerLoginRequest) returns (CustomerLoginResponse) {}
+}

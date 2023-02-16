@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "pb/response.proto";
+
+option go_package = "./pb";
+
+message Order {
+    string order_id = 1;
+    OrderBuyer buyer = 2;
+    repeated OrderProduct product = 3;
+    OrderPayment payment = 4;
+    string status = 5;
+    int64 created_at = 6;
+    int64 updated_at = 7;
+}
+
+message OrderProduct {
+    string product_id = 1;
+    string name = 2;
+    int64 price = 3;
+    int64 duration = 4;
+    string description = 5;
+}
+
+message OrderBuyer {
+    string customer_id = 1;
+    string name = 2;
+    string user = 3;
+}
+
+message OrderPayment {
+    string payment_type = 1;
+    string order_id = 2;
+    string bank = 3;
+    string va_number = 4;
+    int64 gross_amount = 5;
+}
+
+message OrderCreateRequest {
+    OrderBuyer buyer = 1;
+    repeated OrderProduct product = 2;
+    OrderPayment payment = 3;
+}
+
+message OrderChangeStatus {
+    string order_id = 1;
+    string status = 2;
+    int64 settlement_time = 3;
+}
+
+message OrderFindOneRequest {
+    string order_id = 1;
+}
+
+message OrderFindAllRequest {
+    string sort = 1;
+    int64 page = 2;
+    int64 perPage = 3;
+    string search = 4;
+    string status = 5;
+    bool count_only = 6;
+}
+
+message OrderFindAllResponse {
+    repeated Order orders = 1;
+    int64 rows = 2;
+    int64 pages = 3;
+    int64 per_page = 4;
+    int64 active_page = 5;
+    int64 total = 6;
+}
+
+message OrderSumIncomeRequest {
+    string status = 1;
+}
+
+message OrderSumPayload {
+    int64 total = 1;
+}
+
+message OrderSumResponse {
+    bool is_empty = 1;
+    OrderSumPayload payload = 2;
+}
+
+service OrderService {
+    rpc Create(OrderCreateRequest) returns (Empty) {}
+    rpc ChangeStatus(OrderChangeStatus) returns (OperationResponse) {}
+    rpc FindOne(OrderFindOneRequest) returns (Order) {}
+    rpc FindAll(OrderFindAllRequest) returns (OrderFindAllResponse) {}
+    rpc SumIncome(OrderSumIncomeRequest) returns (OrderSumResponse) {}
+}

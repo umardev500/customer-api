@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+import "pb/response.proto";
+
+option go_package = "./pb";
+
+message UserLocation {
+    string address = 1;
+    string village = 2;
+    string district = 3;
+    string city = 4;
+    string province = 5;
+    string postal_code = 6;
+}
+
+message UserDetail {
+    string name = 1;
+    string email = 2;
+    string phone = 3;
+    string avatar = 4;
+    string gender = 5;
+    UserLocation location = 6;
+}
+
+message User {
+    string user_id = 1;
+    string user = 2;
+    string pass = 3;
+    UserDetail detail = 4;
+    string level = 5;
+    string status = 6;
+    int64 created_at = 7;
+    int64 updated_at = 8;
+    int64 deleted_at = 9;
+}
+
+message UserLoginRequest {
+    string user = 1;
+    string pass = 2;
+}
+
+message UserLoginResponsePayload {
+    string user_id = 1;
+    string user = 2;
+    string level = 3;
+}
+
+message UserLoginResponse {
+    bool is_empty = 1;
+    UserLoginResponsePayload payload = 2;
+}
+
+message UserFindRequest {
+    string user_id = 1;
+}
+
+message UserFindResponse {
+    bool is_empty = 1;
+    User payload = 2;
+}
+
+message UserUpdateCredsRequest {
+    string user_id = 1;
+    string user = 2;
+    string pass = 3;
+    string new_pass = 4;
+}
+
+message UserUpdateDetailRequest {
+    UserDetail detail = 1;
+    string user_id = 2;
+}
+
+service UserService {
+    rpc Login(UserLoginRequest) returns (UserLoginResponse) {}
+    rpc Find(UserFindRequest) returns (UserFindResponse) {}
+    rpc UpdateCreds(UserUpdateCredsRequest) returns (OperationResponse) {}
+    rpc UpdateDetail(UserUpdateDetailRequest) returns (OperationResponse) {}
+}

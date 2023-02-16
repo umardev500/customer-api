@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+import "pb/response.proto";
+
+option go_package = "./pb";
+
+message Product {
+    string product_id = 1;
+    string name = 2;
+    int64 price = 3;
+    int64 duration = 4;
+    string description = 5;
+    int64 created_at = 6;
+    int64 updated_at = 7;
+}
+
+message ProductCreateRequest {
+    string name = 1;
+    int64 price = 2;
+    int64 duration = 3;
+    string description = 4;
+}
+
+message ProductDeleteRequest {
+    string product_id = 1;
+}
+
+message ProductUpdateRequest {
+    ProductCreateRequest detail = 1;
+    string product_id = 2;
+}
+
+message ProductFindOneRequest {
+    string product_id = 1;
+}
+
+message ProductFindAllRequest {
+    string sort = 1;
+    int64 page = 2;
+    int64 perPage = 3;
+    string search = 4;
+}
+
+message ProductFindAllResponse {
+    repeated Product products = 1;
+    int64 rows = 2;
+    int64 pages = 3;
+    int64 per_page = 4;
+    int64 active_page = 5;
+    int64 total = 6;
+}
+
+service ProductService {
+    rpc Create(ProductCreateRequest) returns (Empty) {}
+    rpc Delete(ProductDeleteRequest) returns (OperationResponse) {}
+    rpc Update(ProductUpdateRequest) returns (OperationResponse) {}
+    rpc FindOne(ProductFindOneRequest) returns (Product) {}
+    rpc FindAll(ProductFindAllRequest) returns (ProductFindAllResponse) {}
+}
