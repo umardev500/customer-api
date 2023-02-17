@@ -19,16 +19,6 @@ func NewAppDelivery(router fiber.Router, appUsecase domain.AppUsecase) {
 	router.Get("/me", handler.Find)
 }
 
-func (a *appDelivery) Orders(ctx *fiber.Ctx) error {
-	authorizationHeader := ctx.Get("Authorization")
-	claims, f := helper.GetClaims(ctx, authorizationHeader)
-	if claims == nil {
-		return f
-	}
-
-	return ctx.JSON(claims)
-}
-
 func (a *appDelivery) Find(ctx *fiber.Ctx) error {
 	authorizationHeader := ctx.Get("Authorization")
 	claims, f := helper.GetClaims(ctx, authorizationHeader)
