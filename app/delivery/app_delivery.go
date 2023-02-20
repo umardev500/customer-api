@@ -4,12 +4,15 @@ import (
 	"customer-api/domain"
 	"customer-api/helper"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 )
 
 type appDelivery struct {
 	appUsecase domain.AppUsecase
 }
+
+var validate = validator.New()
 
 func NewAppDelivery(router fiber.Router, appUsecase domain.AppUsecase) {
 	handler := &appDelivery{
@@ -18,6 +21,7 @@ func NewAppDelivery(router fiber.Router, appUsecase domain.AppUsecase) {
 
 	router.Get("/me", handler.Find)
 	router.Put("/update-detail", handler.Update)
+	router.Put("/update-creds", handler.UpdateCreds)
 }
 
 func (a *appDelivery) Find(ctx *fiber.Ctx) error {

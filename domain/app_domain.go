@@ -38,6 +38,11 @@ type Customer struct {
 	DeletedAt  int64           `json:"deleted_at,omitempty"`
 }
 
+type CustomerCreds struct {
+	Pass    string `json:"pass" validate:"required,min=6"`
+	NewPass string `json:"new_pass" validate:"required,min=6"`
+}
+
 type AppUsecase interface {
 	Find(ctx context.Context, userId string) (res *pb.CustomerFindResponse, err error)
 	Update(ctx context.Context, userId string, detail CustomerDetail) (res *pb.OperationResponse, err error)
