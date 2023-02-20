@@ -17,6 +17,7 @@ func NewAppDelivery(router fiber.Router, appUsecase domain.AppUsecase) {
 	}
 
 	router.Get("/me", handler.Find)
+	router.Put("/update-detail", handler.Update)
 }
 
 func (a *appDelivery) Find(ctx *fiber.Ctx) error {
