@@ -38,7 +38,7 @@ message OrderPayment {
 
 message OrderCreateRequest {
     OrderBuyer buyer = 1;
-    repeated OrderProduct product = 2;
+    OrderProduct product = 2;
     OrderPayment payment = 3;
 }
 

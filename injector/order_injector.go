@@ -12,5 +12,7 @@ import (
 func NewOrderInjector(router fiber.Router, order pb.OrderServiceClient) {
 	repo := repository.NewOrderRepository(order)
 	uc := usecase.NewOrderUsecase(repo)
-	delivery.NewOrderDelivery(router, uc)
+	paymentRepo := repository.NewPaymentRepository()
+	paymentUc := usecase.NewPaymentUsecase(paymentRepo)
+	delivery.NewOrderDelivery(router, uc, paymentUc)
 }

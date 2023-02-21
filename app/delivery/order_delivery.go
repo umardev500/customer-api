@@ -10,15 +10,18 @@ import (
 )
 
 type orderDelivery struct {
-	usecase domain.OrderUsecase
+	usecase  domain.OrderUsecase
+	pamyment domain.PaymentUsecase
 }
 
-func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase) {
+func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment domain.PaymentUsecase) {
 	handler := &orderDelivery{
-		usecase: usecase,
+		usecase:  usecase,
+		pamyment: payment,
 	}
 
-	router.Get("/order-list", handler.Orders)
+	router.Get("/orders", handler.Orders)
+	router.Post("/orders", handler.Create)
 }
 
 func (o *orderDelivery) Orders(ctx *fiber.Ctx) error {
