@@ -24,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type OrderServiceClient interface {
 	Create(ctx context.Context, in *OrderCreateRequest, opts ...grpc.CallOption) (*Empty, error)
 	ChangeStatus(ctx context.Context, in *OrderChangeStatus, opts ...grpc.CallOption) (*OperationResponse, error)
-	FindOne(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*Order, error)
+	FindOne(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*OrderFindOneResponse, error)
 	FindAll(ctx context.Context, in *OrderFindAllRequest, opts ...grpc.CallOption) (*OrderFindAllResponse, error)
 	SumIncome(ctx context.Context, in *OrderSumIncomeRequest, opts ...grpc.CallOption) (*OrderSumResponse, error)
 }
@@ -55,8 +55,8 @@ func (c *orderServiceClient) ChangeStatus(ctx context.Context, in *OrderChangeSt
 	return out, nil
 }
 
-func (c *orderServiceClient) FindOne(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*Order, error) {
-	out := new(Order)
+func (c *orderServiceClient) FindOne(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*OrderFindOneResponse, error) {
+	out := new(OrderFindOneResponse)
 	err := c.cc.Invoke(ctx, "/OrderService/FindOne", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,7 +88,7 @@ func (c *orderServiceClient) SumIncome(ctx context.Context, in *OrderSumIncomeRe
 type OrderServiceServer interface {
 	Create(context.Context, *OrderCreateRequest) (*Empty, error)
 	ChangeStatus(context.Context, *OrderChangeStatus) (*OperationResponse, error)
-	FindOne(context.Context, *OrderFindOneRequest) (*Order, error)
+	FindOne(context.Context, *OrderFindOneRequest) (*OrderFindOneResponse, error)
 	FindAll(context.Context, *OrderFindAllRequest) (*OrderFindAllResponse, error)
 	SumIncome(context.Context, *OrderSumIncomeRequest) (*OrderSumResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
@@ -104,7 +104,7 @@ func (UnimplementedOrderServiceServer) Create(context.Context, *OrderCreateReque
 func (UnimplementedOrderServiceServer) ChangeStatus(context.Context, *OrderChangeStatus) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeStatus not implemented")
 }
-func (UnimplementedOrderServiceServer) FindOne(context.Context, *OrderFindOneRequest) (*Order, error) {
+func (UnimplementedOrderServiceServer) FindOne(context.Context, *OrderFindOneRequest) (*OrderFindOneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindOne not implemented")
 }
 func (UnimplementedOrderServiceServer) FindAll(context.Context, *OrderFindAllRequest) (*OrderFindAllResponse, error) {
