@@ -21,6 +21,7 @@ func main() {
 	conns := config.NewConn()
 	customer := conns.CustomerConn()
 	order := conns.OrderConn()
+	product := conns.ProductConn()
 
 	app := fiber.New()
 	app.Use(cors.New())
@@ -29,6 +30,7 @@ func main() {
 	api := app.Group("api")
 	injector.NewAppInjector(api, customer)
 	injector.NewOrderInjector(api, order)
+	injector.NewProductInjector(api, product)
 
 	fmt.Printf("⚡️[server]: Server is running on porting %s\n", port)
 
