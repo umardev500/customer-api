@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "f478ab74-9069-42a5-b97d-d1846ba41b48",
+    "colId": "history",
+    "containerId": "",
+    "name": "get customer self",
+    "url": "http://localhost:8000/customer/api/me",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-02-16T16:49:12.049Z",
+    "modified": "2023-02-22T07:03:57.106Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  }
+]

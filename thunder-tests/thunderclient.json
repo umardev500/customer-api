@@ -1,0 +1,183 @@
+[
+  {
+    "_id": "9012b3eb-c285-44fc-8ec2-d1f872ba2c8e",
+    "colId": "911cf4e2-ae03-43b0-9de1-cb15ebe8d087",
+    "containerId": "",
+    "name": "create order",
+    "url": "http://localhost:8000/customer/api/orders?payment_type=bank",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-22T07:08:37.377Z",
+    "modified": "2023-02-22T07:09:09.934Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "payment_type",
+        "value": "bank",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"product\": {\n    \"product_id\": \"1878271823\",\n    \"name\": \"Paket Premium\",\n    \"price\": 200000,\n    \"duration\": 30,\n    \"description\": \"this is desc\"\n  },\n  \"payment\": {\n    \"payment_type\": \"bank_transfer\",\n    \"bank_transfer\": {\n      \"bank\": \"bri\"\n    },\n    \"transaction_details\": {\n      \"gross_amount\": 5000000\n    }\n  }\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  },
+  {
+    "_id": "55444c1a-5ce5-405a-8754-09fca13063d2",
+    "colId": "b590326c-c6a1-44be-a5f2-c8055a065f5c",
+    "containerId": "",
+    "name": "login",
+    "url": "http://localhost:6008/customer/api/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-22T07:09:42.533Z",
+    "modified": "2023-02-22T07:09:42.533Z",
+    "headers": [
+      {
+        "name": "page-id",
+        "value": "2"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"walisongo\",\n  \"password\": \"walisongopass\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c105c79c-cc2c-4def-8d05-afff8f28be36",
+    "colId": "aa051df2-4c81-4e20-b2bf-58b3f4ff76e3",
+    "containerId": "",
+    "name": "update detail",
+    "url": "http://localhost:8000/customer/api/update-detail",
+    "method": "PUT",
+    "sortNum": 10000,
+    "created": "2023-02-22T07:10:24.701Z",
+    "modified": "2023-02-22T07:10:24.701Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"SMK Walisongo\",\n  \"logo\": \"/uploads/images/avatars/avatar-1.png\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5NjQ4MDksIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.g212841_ToCSVqLJPzhV5_U6WZ16wA-ueSHUv9vpNGI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a56884e9-aa77-43a3-83ea-e5b6d587727e",
+    "colId": "1e7970d0-f149-4e07-bf2b-2dd86dabe5a0",
+    "containerId": "",
+    "name": "products",
+    "url": "http://localhost:8000/customer/api/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-22T07:11:15.591Z",
+    "modified": "2023-02-22T07:11:15.591Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  },
+  {
+    "_id": "5e995239-08a2-4eec-93be-bec89ae1e507",
+    "colId": "aa051df2-4c81-4e20-b2bf-58b3f4ff76e3",
+    "containerId": "",
+    "name": "update credentials",
+    "url": "http://localhost:8000/customer/api/update-creds",
+    "method": "PUT",
+    "sortNum": 20000,
+    "created": "2023-02-22T07:11:32.950Z",
+    "modified": "2023-02-22T07:11:32.950Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"pass\": \"walisongo155pass\",\n  \"new_pass\": \"walisongopass\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5MDcxMjYsInVzZXIiOiJ3YWxpc29uZ28iLCJ1c2VyX2lkIjoiMTY2NzI5MjgyMzIzMyJ9.9QQ1KS93aLY9-FzpooIw275Y--popi6trsgyPjUd0yA"
+    },
+    "tests": []
+  },
+  {
+    "_id": "66c2fad6-e694-4578-ad4f-9885f09dcbc4",
+    "colId": "b590326c-c6a1-44be-a5f2-c8055a065f5c",
+    "containerId": "",
+    "name": "auth",
+    "url": "http://localhost:8000/auth/customer/api/auth",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-22T07:12:04.562Z",
+    "modified": "2023-02-22T07:12:04.562Z",
+    "headers": [
+      {
+        "name": "page-id",
+        "value": "2"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"walisongo\",\n  \"password\": \"walisongo155\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5MDMxNDIsInVzZXIiOiJ3YWxpc29uZ28iLCJ1c2VyX2lkIjoiMTY2NzI5MjgyMzIzMyJ9.7eVmPhE6_67Uu-XvGauAyqr09ZehPqMwM6HYd8ChJQA"
+    },
+    "tests": []
+  },
+  {
+    "_id": "2bfbba30-b31d-4989-8007-612b38ecc73c",
+    "colId": "911cf4e2-ae03-43b0-9de1-cb15ebe8d087",
+    "containerId": "",
+    "name": "orders",
+    "url": "http://localhost:8000/customer/api/orders",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-22T07:12:21.856Z",
+    "modified": "2023-02-22T07:13:00.930Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  },
+  {
+    "_id": "97a16e46-8ad6-461f-b5f4-67148da2b8b8",
+    "colId": "aa051df2-4c81-4e20-b2bf-58b3f4ff76e3",
+    "containerId": "",
+    "name": "self",
+    "url": "http://localhost:8000/customer/api/me",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-02-22T07:13:21.997Z",
+    "modified": "2023-02-22T07:13:21.997Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  }
+]
