@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-02-22T07:08:37.377Z",
-    "modified": "2023-02-22T07:09:09.934Z",
+    "modified": "2023-02-22T23:52:09.218Z",
     "headers": [],
     "params": [
       {
@@ -24,7 +24,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxMTM1MjEsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.CuSKX7Q8O199y9mEYAYstkjSl5WEtGO3xKWckq84xPY"
     },
     "tests": []
   },
@@ -84,12 +84,12 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-02-22T07:11:15.591Z",
-    "modified": "2023-02-22T07:11:15.591Z",
+    "modified": "2023-02-22T08:04:05.094Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwMjcwNDMsImxldmVsIjoic3VwZXJfYWRtaW4iLCJ1c2VyIjoidXNlcm5hbWUiLCJ1c2VyX2lkIjoiMTY2NzgyOTI3NjM5ODIzOTgzMjQyMzQifQ.0BFJfmh11s3cHnhswPJ58aBD3dH0R91x9BeJslo_fGE"
     },
     "tests": []
   },
@@ -125,7 +125,7 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-02-22T07:12:04.562Z",
-    "modified": "2023-02-22T07:12:04.562Z",
+    "modified": "2023-02-22T08:18:30.313Z",
     "headers": [
       {
         "name": "page-id",
@@ -133,14 +133,9 @@
       }
     ],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"username\": \"walisongo\",\n  \"password\": \"walisongo155\"\n}",
-      "form": []
-    },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5MDMxNDIsInVzZXIiOiJ3YWxpc29uZ28iLCJ1c2VyX2lkIjoiMTY2NzI5MjgyMzIzMyJ9.7eVmPhE6_67Uu-XvGauAyqr09ZehPqMwM6HYd8ChJQA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwMjcwNDMsImxldmVsIjoic3VwZXJfYWRtaW4iLCJ1c2VyIjoidXNlcm5hbWUiLCJ1c2VyX2lkIjoiMTY2NzgyOTI3NjM5ODIzOTgzMjQyMzQifQ.0BFJfmh11s3cHnhswPJ58aBD3dH0R91x9BeJslo_fGE"
     },
     "tests": []
   },
