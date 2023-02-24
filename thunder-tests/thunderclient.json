@@ -56,18 +56,24 @@
     "_id": "c105c79c-cc2c-4def-8d05-afff8f28be36",
     "colId": "aa051df2-4c81-4e20-b2bf-58b3f4ff76e3",
     "containerId": "",
-    "name": "update detail",
-    "url": "http://localhost:8000/customer/api/update-detail",
+    "name": "upload logo",
+    "url": "http://localhost:8000/customer/api/logo",
     "method": "PUT",
     "sortNum": 10000,
     "created": "2023-02-22T07:10:24.701Z",
-    "modified": "2023-02-24T10:03:19.845Z",
+    "modified": "2023-02-24T10:27:24.157Z",
     "headers": [],
     "params": [],
     "body": {
-      "type": "json",
-      "raw": "{\n  \"name\": \"SMK Walisongo Menes\"\n}",
-      "form": []
+      "type": "formdata",
+      "raw": "",
+      "form": [],
+      "files": [
+        {
+          "name": "logo",
+          "value": "../../../../../../../../../Pictures/bill.jpeg"
+        }
+      ]
     },
     "auth": {
       "type": "bearer",
@@ -169,6 +175,29 @@
     "modified": "2023-02-22T07:13:21.997Z",
     "headers": [],
     "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
+  },
+  {
+    "_id": "ae434efa-93b5-4d8c-9173-d88cc7e8f65e",
+    "colId": "aa051df2-4c81-4e20-b2bf-58b3f4ff76e3",
+    "containerId": "",
+    "name": "upload detail",
+    "url": "http://localhost:8000/customer/api/update-detail",
+    "method": "PUT",
+    "sortNum": 15000,
+    "created": "2023-02-24T10:26:27.336Z",
+    "modified": "2023-02-24T10:26:27.336Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"SMK Walisongo Menes\"\n}",
+      "form": []
+    },
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
