@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-02-22T07:08:37.377Z",
-    "modified": "2023-02-22T23:52:09.218Z",
+    "modified": "2023-02-23T04:13:39.920Z",
     "headers": [],
     "params": [
       {
@@ -24,7 +24,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxMTM1MjEsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.CuSKX7Q8O199y9mEYAYstkjSl5WEtGO3xKWckq84xPY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
     },
     "tests": []
   },
@@ -61,17 +61,17 @@
     "method": "PUT",
     "sortNum": 10000,
     "created": "2023-02-22T07:10:24.701Z",
-    "modified": "2023-02-22T07:10:24.701Z",
+    "modified": "2023-02-24T10:03:19.845Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"SMK Walisongo\",\n  \"logo\": \"/uploads/images/avatars/avatar-1.png\"\n}",
+      "raw": "{\n  \"name\": \"SMK Walisongo Menes\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY5NjQ4MDksIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.g212841_ToCSVqLJPzhV5_U6WZ16wA-ueSHUv9vpNGI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
     },
     "tests": []
   },
