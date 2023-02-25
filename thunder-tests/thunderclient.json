@@ -190,12 +190,12 @@
     "method": "PUT",
     "sortNum": 15000,
     "created": "2023-02-24T10:26:27.336Z",
-    "modified": "2023-02-24T10:26:27.336Z",
+    "modified": "2023-02-25T19:48:48.466Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"SMK Walisongo Menes\"\n}",
+      "raw": "{\n  \"name\": \"SMK Walisongo Patia\",\n  \"location\": {\n    \"province\": \"Jakarta\"\n  }\n}",
       "form": []
     },
     "auth": {

@@ -9,7 +9,7 @@ import (
 func (a *appUsecase) Update(ctx context.Context, userId string, detail domain.CustomerDetail) (res *pb.OperationResponse, err error) {
 	var locationPayload *pb.CustomerLocation
 
-	if locationPayload != nil {
+	if detail.Location != nil {
 		locationPayload = &pb.CustomerLocation{
 			Address:    detail.Location.Address,
 			Village:    detail.Location.Village,
