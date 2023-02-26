@@ -4,6 +4,7 @@ import (
 	"customer-api/domain"
 	"customer-api/helper"
 	"customer-api/pb"
+	"errors"
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
@@ -57,6 +58,11 @@ func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.Orde
 		CustomerId: userId,
 		User:       user,
 		Name:       name,
+	}
+
+	if result.VaNumbers == nil {
+		err = errors.New(http.StatusText(http.StatusBadRequest))
+		return helper.HandleResponse(ctx, err, 0, 400, http.StatusText(http.StatusBadRequest), nil)
 	}
 
 	// create order
