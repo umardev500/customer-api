@@ -34,9 +34,9 @@ type BankTransfer struct {
 type BankTransferRequest struct {
 	PaymentType        string       `json:"payment_type,omitempty" validate:"required"`
 	BankTransfer       BankTransfer `json:"bank_transfer,omitempty"`
-	TransactionDetails struct {
-		OrderId     string `json:"order_id"`
-		GrossAmount int64  `json:"gross_amount,omitempty" validate:"required"`
+	TransactionDetails *struct {
+		OrderId     string `json:"order_id,omitempty"`
+		GrossAmount int64  `json:"gross_amount,omitempty"`
 	} `json:"transaction_details,omitempty"`
 	CustomerDetails *struct {
 		Email     string `json:"email,omitempty"`

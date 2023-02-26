@@ -13,7 +13,7 @@ import (
 func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	paymentType := ctx.Query("payment_type")
 
-	var payload = new(domain.OrderRequest)
+	var payload = new(domain.OrderPayloadRequest)
 	if err := ctx.BodyParser(&payload); err != nil {
 		return helper.HandleResponse(ctx, err, 0, 500, err.Error(), nil)
 	}

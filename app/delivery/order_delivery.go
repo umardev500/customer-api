@@ -11,13 +11,15 @@ import (
 
 type orderDelivery struct {
 	usecase  domain.OrderUsecase
+	product  domain.ProductUsecase
 	pamyment domain.PaymentUsecase
 }
 
-func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment domain.PaymentUsecase) {
+func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment domain.PaymentUsecase, product domain.ProductUsecase) {
 	handler := &orderDelivery{
 		usecase:  usecase,
 		pamyment: payment,
+		product:  product,
 	}
 
 	router.Get("/orders", handler.Orders)

@@ -18,6 +18,11 @@ type OrderRequest struct {
 	Payment BankTransferRequest `json:"payment"`
 }
 
+type OrderPayloadRequest struct {
+	ProductId string              `json:"product_id" validate:"required"`
+	Payment   BankTransferRequest `json:"payment"`
+}
+
 type OrderUsecase interface {
 	FindAll(ctx context.Context, req *pb.OrderFindAllRequest) (res *pb.OrderFindAllResponse, err error)
 	CreateOrder(ctx context.Context, payload OrderRequest, buyer *pb.OrderBuyer, chargeResult BankResponse) (err error)

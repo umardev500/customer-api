@@ -29,8 +29,8 @@ func main() {
 
 	api := app.Group("api")
 	injector.NewAppInjector(api, customer)
-	injector.NewOrderInjector(api, order)
-	injector.NewProductInjector(api, product)
+	productUsecase := injector.NewProductInjector(api, product)
+	injector.NewOrderInjector(api, order, productUsecase)
 
 	fmt.Printf("⚡️[server]: Server is running on porting %s\n", port)
 
