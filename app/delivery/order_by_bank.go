@@ -8,15 +8,10 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/golang-jwt/jwt/v4"
 )
 
-func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.OrderPayloadRequest) error {
-	authorizationHeader := ctx.Get("Authorization")
-	claims, f := helper.GetClaims(ctx, authorizationHeader)
-	if claims == nil {
-		return f
-	}
-
+func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.OrderPayloadRequest, claims jwt.MapClaims) error {
 	product, err := o.product.GetProduct(ctx.Context(), payload.ProductId)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
@@ -45,14 +40,14 @@ func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.Orde
 		GrossAmount: product.Payload.Price,
 	}
 
+	user := claims["user"].(string)
+	userId := claims["user_id"].(string)
+	name := claims["name"].(string)
+
 	result, err := o.pamyment.ChargeBank(ctx.Context(), orderId, orderData.Payment)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
 	}
-
-	user := claims["user"].(string)
-	userId := claims["user_id"].(string)
-	name := claims["name"].(string)
 
 	buyer := &pb.OrderBuyer{
 		CustomerId: userId,

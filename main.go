@@ -28,9 +28,9 @@ func main() {
 	app.Static("/static", "./public", fiber.Static{Compress: true, Browse: true})
 
 	api := app.Group("api")
-	injector.NewAppInjector(api, customer)
+	userUsecase := injector.NewAppInjector(api, customer)
 	productUsecase := injector.NewProductInjector(api, product)
-	injector.NewOrderInjector(api, order, productUsecase)
+	injector.NewOrderInjector(api, order, productUsecase, userUsecase)
 
 	fmt.Printf("⚡️[server]: Server is running on porting %s\n", port)
 

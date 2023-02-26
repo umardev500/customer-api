@@ -9,7 +9,7 @@ func HandleResponse(ctx *fiber.Ctx, err error, status int, statusErr int, messag
 	}
 
 	if err != nil {
-		return ApiResponse(ctx, errCode, err.Error(), nil)
+		return ApiResponse(ctx, errCode, err.Error(), data)
 	}
 	return ApiResponse(ctx, status, message, data)
 }
