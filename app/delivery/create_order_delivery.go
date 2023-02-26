@@ -34,7 +34,7 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	expTime := res.Payload.ExpUntil
 	isActive := now < expTime
 	if isActive {
-		err = errors.New("Bad request")
+		err = errors.New("bad request")
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
