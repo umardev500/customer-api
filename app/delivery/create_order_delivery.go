@@ -3,6 +3,7 @@ package delivery
 import (
 	"customer-api/domain"
 	"customer-api/helper"
+	"customer-api/pb"
 	"errors"
 	"net/http"
 	"strconv"
@@ -38,6 +39,12 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
+	buyer := &pb.OrderBuyer{
+		CustomerId: userId,
+		User:       res.Payload.User,
+		Name:       res.Payload.Detail.Name,
+	}
+
 	paymentType := ctx.Query("payment_type")
 
 	var payload = new(domain.OrderPayloadRequest)
@@ -52,7 +59,7 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	orderId := strconv.Itoa(int(time.Now().UTC().UnixNano()))
 
 	if paymentType == "bank" {
-		return o.Bank(ctx, orderId, *payload, claims)
+		return o.Bank(ctx, orderId, *payload, buyer)
 	}
 
 	return ctx.JSON(payload)

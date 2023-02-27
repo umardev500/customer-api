@@ -8,10 +8,9 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/golang-jwt/jwt/v4"
 )
 
-func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.OrderPayloadRequest, claims jwt.MapClaims) error {
+func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.OrderPayloadRequest, buyer *pb.OrderBuyer) error {
 	product, err := o.product.GetProduct(ctx.Context(), payload.ProductId)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
@@ -40,19 +39,9 @@ func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.Orde
 		GrossAmount: product.Payload.Price,
 	}
 
-	user := claims["user"].(string)
-	userId := claims["user_id"].(string)
-	name := claims["name"].(string)
-
 	result, err := o.pamyment.ChargeBank(ctx.Context(), orderId, orderData.Payment)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
-	}
-
-	buyer := &pb.OrderBuyer{
-		CustomerId: userId,
-		User:       user,
-		Name:       name,
 	}
 
 	if result.VaNumbers == nil {
