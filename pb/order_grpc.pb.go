@@ -27,7 +27,7 @@ type OrderServiceClient interface {
 	FindOne(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*OrderFindOneResponse, error)
 	FindAll(ctx context.Context, in *OrderFindAllRequest, opts ...grpc.CallOption) (*OrderFindAllResponse, error)
 	SumIncome(ctx context.Context, in *OrderSumIncomeRequest, opts ...grpc.CallOption) (*OrderSumResponse, error)
-	Cancel(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*OperationResponse, error)
+	Cancel(ctx context.Context, in *OrderCancelRequest, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
 type orderServiceClient struct {
@@ -83,7 +83,7 @@ func (c *orderServiceClient) SumIncome(ctx context.Context, in *OrderSumIncomeRe
 	return out, nil
 }
 
-func (c *orderServiceClient) Cancel(ctx context.Context, in *OrderFindOneRequest, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *orderServiceClient) Cancel(ctx context.Context, in *OrderCancelRequest, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/OrderService/Cancel", in, out, opts...)
 	if err != nil {
@@ -101,7 +101,7 @@ type OrderServiceServer interface {
 	FindOne(context.Context, *OrderFindOneRequest) (*OrderFindOneResponse, error)
 	FindAll(context.Context, *OrderFindAllRequest) (*OrderFindAllResponse, error)
 	SumIncome(context.Context, *OrderSumIncomeRequest) (*OrderSumResponse, error)
-	Cancel(context.Context, *OrderFindOneRequest) (*OperationResponse, error)
+	Cancel(context.Context, *OrderCancelRequest) (*OperationResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -124,7 +124,7 @@ func (UnimplementedOrderServiceServer) FindAll(context.Context, *OrderFindAllReq
 func (UnimplementedOrderServiceServer) SumIncome(context.Context, *OrderSumIncomeRequest) (*OrderSumResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SumIncome not implemented")
 }
-func (UnimplementedOrderServiceServer) Cancel(context.Context, *OrderFindOneRequest) (*OperationResponse, error) {
+func (UnimplementedOrderServiceServer) Cancel(context.Context, *OrderCancelRequest) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Cancel not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
@@ -231,7 +231,7 @@ func _OrderService_SumIncome_Handler(srv interface{}, ctx context.Context, dec f
 }
 
 func _OrderService_Cancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OrderFindOneRequest)
+	in := new(OrderCancelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -243,7 +243,7 @@ func _OrderService_Cancel_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/OrderService/Cancel",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).Cancel(ctx, req.(*OrderFindOneRequest))
+		return srv.(OrderServiceServer).Cancel(ctx, req.(*OrderCancelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

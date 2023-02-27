@@ -209,5 +209,23 @@
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
     },
     "tests": []
+  },
+  {
+    "_id": "8746ff22-bd00-49f5-8f5e-d1e0cd76a9e1",
+    "colId": "911cf4e2-ae03-43b0-9de1-cb15ebe8d087",
+    "containerId": "",
+    "name": "cancel order",
+    "url": "http://localhost:8000/customer/api/orders/1677483554496580841/cancel",
+    "method": "PUT",
+    "sortNum": 15000,
+    "created": "2023-02-27T07:40:48.807Z",
+    "modified": "2023-02-27T07:41:42.006Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
   }
 ]

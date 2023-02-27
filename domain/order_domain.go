@@ -26,8 +26,10 @@ type OrderPayloadRequest struct {
 type OrderUsecase interface {
 	FindAll(ctx context.Context, req *pb.OrderFindAllRequest) (res *pb.OrderFindAllResponse, err error)
 	CreateOrder(ctx context.Context, payload OrderRequest, buyer *pb.OrderBuyer, chargeResult BankResponse) (err error)
+	Cancel(ctx context.Context, req *pb.OrderCancelRequest) (res *pb.OperationResponse, err error)
 }
 type OrderRepository interface {
 	FindAll(ctx context.Context, req *pb.OrderFindAllRequest) (res *pb.OrderFindAllResponse, err error)
 	CreateOrder(ctx context.Context, req *pb.OrderCreateRequest) (err error)
+	Cancel(ctx context.Context, req *pb.OrderCancelRequest) (res *pb.OperationResponse, err error)
 }

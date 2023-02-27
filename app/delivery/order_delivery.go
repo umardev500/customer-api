@@ -26,6 +26,7 @@ func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment 
 
 	router.Get("/orders", handler.Orders)
 	router.Post("/orders", handler.Create)
+	router.Put("/orders/:id/cancel", handler.Cancel)
 }
 
 func (o *orderDelivery) Orders(ctx *fiber.Ctx) error {

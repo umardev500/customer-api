@@ -95,11 +95,16 @@ message OrderFindOneResponse {
     Order payload = 2;
 }
 
+message OrderCancelRequest {
+    string order_id = 1;
+    string user_id = 2;
+}
+
 service OrderService {
     rpc Create(OrderCreateRequest) returns (Empty) {}
     rpc ChangeStatus(OrderChangeStatus) returns (OperationResponse) {}
     rpc FindOne(OrderFindOneRequest) returns (OrderFindOneResponse) {}
     rpc FindAll(OrderFindAllRequest) returns (OrderFindAllResponse) {}
     rpc SumIncome(OrderSumIncomeRequest) returns (OrderSumResponse) {}
-    rpc Cancel(OrderFindOneRequest) returns (OperationResponse) {}
+    rpc Cancel(OrderCancelRequest) returns (OperationResponse) {}
 }
