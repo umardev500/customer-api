@@ -5,7 +5,6 @@ import (
 	"customer-api/helper"
 	"customer-api/pb"
 	"errors"
-	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -32,8 +31,12 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 		return helper.HandleResponse(ctx, err, 0, http.StatusNotFound, http.StatusText(404), res)
 	}
 
-	isDeleted := res.Payload.DeletedAt
-	fmt.Println(isDeleted)
+	isDeleted := res.Payload.DeletedAt != 0
+	if isDeleted {
+		err = errors.New("bad request")
+		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
+	}
+
 	now := time.Now().UTC().Unix()
 	expTime := res.Payload.ExpUntil
 	isActive := now < expTime
