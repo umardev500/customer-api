@@ -150,13 +150,19 @@
     "colId": "911cf4e2-ae03-43b0-9de1-cb15ebe8d087",
     "containerId": "",
     "name": "orders",
-    "url": "http://localhost:8000/customer/api/orders",
+    "url": "http://localhost:8000/customer/api/orders?status=pending",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-02-22T07:12:21.856Z",
-    "modified": "2023-02-22T07:13:00.930Z",
+    "modified": "2023-02-27T07:11:20.785Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "status",
+        "value": "pending",
+        "isPath": false
+      }
+    ],
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"

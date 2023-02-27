@@ -19,11 +19,23 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 		return f
 	}
 
+	// check for previous order not paid
+	orders, err := o.usecase.FindAll(ctx.Context(), &pb.OrderFindAllRequest{Status: "pending"})
+	if err != nil {
+		err = errors.New("bad request")
+		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
+	}
+
+	if !orders.IsEmpty {
+		err = errors.New("bad request")
+		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
+	}
+
+	// find user
 	userId := claims["user_id"].(string)
 	res, err := o.user.Find(ctx.Context(), userId)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusInternalServerError, err.Error(), nil)
-
 	}
 
 	if res.IsEmpty {
