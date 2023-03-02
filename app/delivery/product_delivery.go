@@ -15,4 +15,5 @@ func NewProductDelivery(router fiber.Router, usecase domain.ProductUsecase) {
 		usecase: usecase,
 	}
 	router.Get("/products", handler.GetProducts)
+	router.Get("/products/:id", handler.GetProduct)
 }
