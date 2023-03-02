@@ -26,7 +26,8 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	}
 
 	if !orders.IsEmpty {
-		err = errors.New("selesaikan pesanan sebelumnya")
+		// o01 for prevoius order not ended
+		err = errors.New("o01")
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
 	}
 
@@ -38,13 +39,15 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	}
 
 	if res.IsEmpty {
-		err = errors.New("data pengguna tidak ditemukan")
+		// u00 for user not found
+		err = errors.New("u00")
 		return helper.HandleResponse(ctx, err, 0, http.StatusNotFound, http.StatusText(404), res)
 	}
 
 	isDeleted := res.Payload.DeletedAt != 0
 	if isDeleted {
-		err = errors.New("akun telah dihapus")
+		// u01 for deleted user
+		err = errors.New("u01")
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
@@ -52,7 +55,8 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	expTime := res.Payload.ExpUntil
 	isActive := now < expTime
 	if isActive {
-		err = errors.New("kontrak masih aktif")
+		// r01 for rent still active
+		err = errors.New("r01")
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
