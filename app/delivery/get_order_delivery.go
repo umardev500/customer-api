@@ -8,6 +8,12 @@ import (
 )
 
 func (o *orderDelivery) GetOrder(ctx *fiber.Ctx) (err error) {
+	authorizationHeader := ctx.Get("Authorization")
+	claims, f := helper.GetClaims(ctx, authorizationHeader)
+	if claims == nil {
+		return f
+	}
+
 	orderId := ctx.Params("id")
 	res, err := o.usecase.Find(ctx.Context(), &pb.OrderFindOneRequest{OrderId: orderId})
 
