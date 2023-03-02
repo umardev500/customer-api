@@ -32,7 +32,7 @@ func main() {
 	productUsecase := injector.NewProductInjector(api, product)
 	injector.NewOrderInjector(api, order, productUsecase, userUsecase)
 
-	fmt.Printf("⚡️[server]: Server is running on porting %s\n", port)
+	fmt.Printf("⚡️[server]: Server is running on port %s\n", port)
 
 	log.Fatal(app.Listen(port))
 
