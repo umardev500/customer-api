@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN go mod tidy
+
 EXPOSE 6012
 
 CMD air
