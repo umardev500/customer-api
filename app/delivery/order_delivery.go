@@ -25,6 +25,7 @@ func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment 
 	}
 
 	router.Get("/orders", handler.Orders)
+	router.Get("/orders/:id", handler.GetOrder)
 	router.Post("/orders", handler.Create)
 	router.Put("/orders/:id/cancel", handler.Cancel)
 }

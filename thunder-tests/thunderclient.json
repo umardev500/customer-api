@@ -245,5 +245,23 @@
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwMjcwNDMsImxldmVsIjoic3VwZXJfYWRtaW4iLCJ1c2VyIjoidXNlcm5hbWUiLCJ1c2VyX2lkIjoiMTY2NzgyOTI3NjM5ODIzOTgzMjQyMzQifQ.0BFJfmh11s3cHnhswPJ58aBD3dH0R91x9BeJslo_fGE"
     },
     "tests": []
+  },
+  {
+    "_id": "7c22a2eb-f1c4-44b9-896f-ea072fd06c26",
+    "colId": "911cf4e2-ae03-43b0-9de1-cb15ebe8d087",
+    "containerId": "",
+    "name": "order",
+    "url": "http://localhost:8000/customer/api/orders/1677745157418216319",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-03-02T10:01:25.253Z",
+    "modified": "2023-03-02T10:02:17.226Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NjI2ODMsIm5hbWUiOiJTTUsgV2FsaXNvbmdvIiwidXNlciI6IndhbGlzb25nbyIsInVzZXJfaWQiOiIxNjY3MjkyODIzMjMzIn0.37wXg3eSAIyTiu0K_Oetj2oeFmRCbdPAm6iRH-HWRHY"
+    },
+    "tests": []
   }
 ]
