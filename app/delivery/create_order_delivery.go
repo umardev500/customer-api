@@ -22,12 +22,11 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	// check for previous order not paid
 	orders, err := o.usecase.FindAll(ctx.Context(), &pb.OrderFindAllRequest{Status: "pending"})
 	if err != nil {
-		err = errors.New("bad request")
-		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
+		return helper.HandleResponse(ctx, err, 0, http.StatusInternalServerError, err.Error(), nil)
 	}
 
 	if !orders.IsEmpty {
-		err = errors.New("bad request")
+		err = errors.New("selesaikan pesanan sebelumnya")
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
 	}
 
@@ -39,13 +38,13 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	}
 
 	if res.IsEmpty {
-		err = errors.New("not found")
+		err = errors.New("data pengguna tidak ditemukan")
 		return helper.HandleResponse(ctx, err, 0, http.StatusNotFound, http.StatusText(404), res)
 	}
 
 	isDeleted := res.Payload.DeletedAt != 0
 	if isDeleted {
-		err = errors.New("bad request")
+		err = errors.New("akun telah dihapus")
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
@@ -53,7 +52,7 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 	expTime := res.Payload.ExpUntil
 	isActive := now < expTime
 	if isActive {
-		err = errors.New("bad request")
+		err = errors.New("kontrak masih aktif")
 		return helper.HandleResponse(ctx, err, 0, 400, err.Error(), nil)
 	}
 
