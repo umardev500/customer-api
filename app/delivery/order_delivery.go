@@ -10,18 +10,18 @@ import (
 )
 
 type orderDelivery struct {
-	usecase  domain.OrderUsecase
-	product  domain.ProductUsecase
-	user     domain.AppUsecase
-	pamyment domain.PaymentUsecase
+	usecase domain.OrderUsecase
+	product domain.ProductUsecase
+	user    domain.AppUsecase
+	payment domain.PaymentUsecase
 }
 
 func NewOrderDelivery(router fiber.Router, usecase domain.OrderUsecase, payment domain.PaymentUsecase, product domain.ProductUsecase, user domain.AppUsecase) {
 	handler := &orderDelivery{
-		usecase:  usecase,
-		pamyment: payment,
-		product:  product,
-		user:     user,
+		usecase: usecase,
+		payment: payment,
+		product: product,
+		user:    user,
 	}
 
 	router.Get("/orders", handler.Orders)

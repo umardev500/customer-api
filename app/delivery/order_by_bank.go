@@ -39,7 +39,7 @@ func (o *orderDelivery) Bank(ctx *fiber.Ctx, orderId string, payload domain.Orde
 		GrossAmount: product.Payload.Price,
 	}
 
-	result, err := o.pamyment.ChargeBank(ctx.Context(), orderId, orderData.Payment)
+	result, err := o.payment.ChargeBank(ctx.Context(), orderId, orderData.Payment)
 	if err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
 	}
