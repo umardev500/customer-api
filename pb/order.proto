@@ -13,6 +13,8 @@ message Order {
     int64 created_at = 6;
     int64 updated_at = 7;
     int64 settlement_time = 8;
+    int64 trx_time = 9;
+    int64 pay_exp = 10;
 }
 
 message OrderProduct {
@@ -41,6 +43,7 @@ message OrderCreateRequest {
     OrderBuyer buyer = 1;
     OrderProduct product = 2;
     OrderPayment payment = 3;
+    int64 trx_time = 4;
 }
 
 message OrderChangeStatus {
