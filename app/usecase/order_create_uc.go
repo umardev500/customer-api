@@ -3,9 +3,13 @@ package usecase
 import (
 	"context"
 	"customer-api/domain"
+	"customer-api/helper"
 	"customer-api/pb"
+	"customer-api/variable"
+	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func (o *orderUsecase) CreateOrder(ctx context.Context, payload domain.OrderRequest, buyer *pb.OrderBuyer, chargeResult domain.BankResponse) (err error) {
@@ -30,10 +34,21 @@ func (o *orderUsecase) CreateOrder(ctx context.Context, payload domain.OrderRequ
 		GrossAmount: int64(amount),
 	}
 
+	loc, err := helper.WIB()
+	fmt.Println(err)
+
+	trxTimeStr := chargeResult.TransactionTime
+	t, err := time.ParseInLocation(variable.TimeLayout, trxTimeStr, loc)
+	if err != nil {
+		return
+	}
+	trxTime := t.UTC().Unix()
+
 	value := &pb.OrderCreateRequest{
 		Buyer:   buyer,
 		Product: product,
 		Payment: payment,
+		TrxTime: trxTime,
 	}
 
 	err = o.repository.CreateOrder(ctx, value)
