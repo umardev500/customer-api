@@ -6,7 +6,6 @@ import (
 	"customer-api/helper"
 	"customer-api/pb"
 	"customer-api/variable"
-	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -35,7 +34,9 @@ func (o *orderUsecase) CreateOrder(ctx context.Context, payload domain.OrderRequ
 	}
 
 	loc, err := helper.WIB()
-	fmt.Println(err)
+	if err != nil {
+		return
+	}
 
 	trxTimeStr := chargeResult.TransactionTime
 	t, err := time.ParseInLocation(variable.TimeLayout, trxTimeStr, loc)

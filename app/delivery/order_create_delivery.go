@@ -4,9 +4,10 @@ import (
 	"customer-api/domain"
 	"customer-api/helper"
 	"customer-api/pb"
+	"customer-api/variable"
 	"errors"
 	"net/http"
-	"strconv"
+	"os"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -73,11 +74,23 @@ func (o *orderDelivery) Create(ctx *fiber.Ctx) error {
 		return helper.HandleResponse(ctx, err, 0, 500, err.Error(), nil)
 	}
 
+	// set expiration
+	payExp := helper.ToInt(os.Getenv("PAY_EXP"))
+	payload.Payment.CustomExpiry = &struct {
+		ExpiryDuration int    "json:\"expiry_duration\""
+		Unit           string "json:\"unit\""
+	}{
+		ExpiryDuration: int(payExp),
+		Unit:           "minute",
+	}
+
+	// validate struct
 	if err := validate.Struct(payload); err != nil {
 		return helper.HandleResponse(ctx, err, 0, http.StatusBadRequest, err.Error(), nil)
 	}
 
-	orderId := strconv.Itoa(int(time.Now().UTC().UnixNano()))
+	// create order id
+	orderId := helper.ToString(int(helper.GetTime(&variable.UnixNano)))
 
 	if paymentType == "bank" {
 		return o.Bank(ctx, orderId, *payload, buyer)
