@@ -44,6 +44,7 @@ message OrderCreateRequest {
     OrderProduct product = 2;
     OrderPayment payment = 3;
     int64 trx_time = 4;
+    int64 pay_exp = 5;
 }
 
 message OrderChangeStatus {

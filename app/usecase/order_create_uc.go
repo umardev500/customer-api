@@ -6,6 +6,7 @@ import (
 	"customer-api/helper"
 	"customer-api/pb"
 	"customer-api/variable"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -44,12 +45,14 @@ func (o *orderUsecase) CreateOrder(ctx context.Context, payload domain.OrderRequ
 		return
 	}
 	trxTime := t.UTC().Unix()
+	payExp := trxTime + helper.ToInt(os.Getenv("PAY_EXP"))
 
 	value := &pb.OrderCreateRequest{
 		Buyer:   buyer,
 		Product: product,
 		Payment: payment,
 		TrxTime: trxTime,
+		PayExp:  payExp,
 	}
 
 	err = o.repository.CreateOrder(ctx, value)
