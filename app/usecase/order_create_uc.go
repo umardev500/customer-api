@@ -44,15 +44,17 @@ func (o *orderUsecase) CreateOrder(ctx context.Context, payload domain.OrderRequ
 	if err != nil {
 		return
 	}
-	trxTime := t.UTC().Unix()
-	payExp := trxTime + helper.ToInt(os.Getenv("PAY_EXP"))
+	trxTime := t.UTC()
+	trxTimeUnix := trxTime.Unix()
+	payExp := helper.ToInt(os.Getenv("PAY_EXP"))
+	payExpTime := trxTime.Add(time.Duration(payExp) * time.Minute).Unix()
 
 	value := &pb.OrderCreateRequest{
 		Buyer:   buyer,
 		Product: product,
 		Payment: payment,
-		TrxTime: trxTime,
-		PayExp:  payExp,
+		TrxTime: trxTimeUnix,
+		PayExp:  payExpTime,
 	}
 
 	err = o.repository.CreateOrder(ctx, value)
